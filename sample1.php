@@ -1,12 +1,12 @@
 <?php
 
 // 注文処理インターフェース
-interface OrderProcessor {
+interface IOrderProcessor {
     function processOrder(array $orderData): void;
 }
 
 // オンラインストアの注文処理クラス
-class OnlineStoreOrderProcessor implements OrderProcessor {
+class OnlineStoreOrderProcessor implements IOrderProcessor {
 
     /**
      * 注文処理
@@ -23,7 +23,7 @@ class OnlineStoreOrderProcessor implements OrderProcessor {
 }
 
 // 小売店の注文処理クラス
-class RetailStoreOrderProcessor implements OrderProcessor {
+class RetailStoreOrderProcessor implements IOrderProcessor {
 
     /**
      * 注文処理
@@ -41,10 +41,10 @@ class RetailStoreOrderProcessor implements OrderProcessor {
 
 /**
  * 注文処理
- * @param OrderProcessor $orderProcessor 注文処理
+ * @param IOrderProcessor $orderProcessor 注文処理
  * @param array $orderData 注文データ
  */
-function processOrder(OrderProcessor $orderProcessor, array $orderData): void {
+function processOrder(IOrderProcessor $orderProcessor, array $orderData): void {
     // 下の処理はOnlineStoreOrderProcessorもRetailStoreOrderProcessorも同じメソッドを持っているからこそ可能なテクニック
     // この$orderProcessorは親のOrderProcessorではなく子のOnlineStoreOrderProcessorやRetailStoreOrderProcessorでも同じことができる
     // これが置換可能という意味
