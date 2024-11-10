@@ -46,7 +46,7 @@ class RetailStoreOrderProcessor implements IOrderProcessor {
  */
 function processOrder(IOrderProcessor $orderProcessor, array $orderData): void {
     // 下の処理はOnlineStoreOrderProcessorもRetailStoreOrderProcessorも同じメソッドを持っているからこそ可能なテクニック
-    // この$orderProcessorは親のOrderProcessorではなく子のOnlineStoreOrderProcessorやRetailStoreOrderProcessorでも同じことができる
+    // この$orderProcessorは親のIOrderProcessorではなく子のOnlineStoreOrderProcessorやRetailStoreOrderProcessorでも同じことができる
     // これが置換可能という意味
     $orderProcessor->processOrder($orderData);
 }
